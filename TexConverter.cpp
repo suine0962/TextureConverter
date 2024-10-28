@@ -2,7 +2,7 @@
 
 void TexConverter::ConvertTextureWICToDDS(const std::string& filePath)
 {
-	LoadWICTextureFromFile("filepath");
+	LoadWICTextureFromFile("LE3C_09_コンドウ_ヒロト_CAB.png");
 
 }
 
@@ -10,8 +10,9 @@ void TexConverter::LoadWICTextureFromFile(const std::string& filePath)
 {
 	const std::string mString;
 	std::wstring wfilePath = ConvertMultiByteStringToWideString(mString);
-
-
+	HRESULT hr = DirectX::LoadFromWICFile(wfilePath.c_str(),
+		DirectX::WIC_FLAGS_NONE, &metadata_, scratchImage_);
+	assert(SUCCEEDED(hr));
 
 }
 
