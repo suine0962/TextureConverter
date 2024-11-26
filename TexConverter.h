@@ -1,19 +1,11 @@
 #pragma once
-#include "math.h"
 #include <string>
-#include "stringapiset.h"
-class TexConverter
+class TextureConverter
 {
-public :
-
+public:
 	void ConvertTextureWICToDDS(const std::string& filePath);
-
 private:
-
 	void LoadWICTextureFromFile(const std::string& filePath);
-	static std::wstring ConvertMultiByteStringToWideString(const std::string& mString);
 
-
-
+	static std::wstring ConvertMultiByteStringToWideSttring(const std::string& mString);
 };
-

@@ -1,32 +1,28 @@
 #include "TexConverter.h"
+#include <Windows.h>
 
-void TexConverter::ConvertTextureWICToDDS(const std::string& filePath)
+void TextureConverter::ConvertTextureWICToDDS(const std::string& filePath)
 {
-	LoadWICTextureFromFile("filepath");
+	LoadWICTextureFromFile(filePath);
+
+	//2
+}
+
+void TextureConverter::LoadWICTextureFromFile(const std::string& filePath)
+{
+	std::wstring wfilePath = ConvertMultiByteStringToWideSttring(filePath);
+
+	//2 
 
 }
 
-void TexConverter::LoadWICTextureFromFile(const std::string& filePath)
+std::wstring TextureConverter::ConvertMultiByteStringToWideSttring(const std::string& mString)
 {
-	const std::string mString;
-	std::wstring wfilePath = ConvertMultiByteStringToWideString(mString);
-
-
-
-}
-
-std::wstring TexConverter::ConvertMultiByteStringToWideString(const std::string& mString)
-{
-	int filePathbufferSize = MultiByteToWideChar(CP_ACP, 0,
-		mString.c_str(), -1, nullptr, 0);
+	int filePathBufferSize = MultiByteToWideChar(CP_ACP, 0, mString.c_str(), -1, nullptr, 0);
 
 	std::wstring wString;
-	wString.resize(filePathbufferSize);
+	wString.resize(filePathBufferSize);
 
-	MultiByteToWideChar(CP_ACP, 0, mString.c_str(), 
-		-1, &wString[0], filePathbufferSize);
-
-
-
+	MultiByteToWideChar(CP_ACP, 0, mString.c_str(), -1, &wString[0], filePathBufferSize);
 	return wString;
 }

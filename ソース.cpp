@@ -4,22 +4,27 @@
 #include <assert.h>
 #include "TexConverter.h"
 
+
+
+enum Argument {
+	kApplicationPath,//アプリケーション
+	kFilePath,//渡されたファイルのパス
+
+	NumArgument
+
+};
+
+
 int main(int argc, char* argv[])
 {
-	enum Argument {
-		kApplicationPath,//アプリケーション
-		kFilePath,//渡されたファイルのパス
-
-		NumArgument
-
-	};
+	
 	assert(argc >= NumArgument);
 
 	HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 	assert(SUCCEEDED(hr));
 
 
-	TexConverter converter;
+	TextureConverter converter;
 	converter.ConvertTextureWICToDDS(argv[kFilePath]);
 
 
